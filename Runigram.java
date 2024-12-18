@@ -10,6 +10,11 @@ public class Runigram {
 		// Tests the reading and printing of an image:	
 		Color[][] tinypic = read("tinypic.ppm");
 		print(tinypic);
+		Color[][] image4;
+		// Tests the grey of an image:
+		image4 = scaled(tinypic, 3, 5);
+		System.out.println();
+		print(image4);
 
 		//Color[][] eyes = read("eyes.ppm");
 		//print(eyes);
@@ -201,17 +206,18 @@ public class Runigram {
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
 		//// Replace the following statement with your code
-		int orgWidth = image[0].length;
 		int orgHeight = image.length;
-		Color[][] newImage = new Color[width][height];
-		double xScale = (double) orgWidth / width;  
-    	double yScale = (double) orgHeight / height; 
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
-				int oldY = (int) (i * yScale);
-				int oldX = (int) (j * xScale);
-				oldX = Math.min(oldX, orgWidth - 1);
+		int orgWidth = image[0].length;
+		Color[][] newImage = new Color[height][width];
+    	double y = (double) orgHeight / height; 
+		double x = (double) orgWidth / width;  
+
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				int oldY = (int) (i * y);
+            	int oldX = (int) (j * x);
 				oldY = Math.min(oldY, orgHeight - 1);
+            	oldX = Math.min(oldX, orgWidth - 1);
 				newImage[i][j] = image[oldY][oldX];
 			}
 		}
