@@ -11,6 +11,8 @@ public class Runigram {
 		Color[][] tinypic = read("tinypic.ppm");
 		print(tinypic);
 
+		//Color[][] eyes = read("eyes.ppm");
+		//print(eyes);
 		
 /*
 		// Creates an image which will be the result of various 
@@ -34,14 +36,33 @@ public class Runigram {
 		image3 = grayScaled(tinypic);
 		System.out.println();
 		print(image3);
-*/
+
 		Color[][] image4;
 		// Tests the grey of an image:
 		image4 = scaled(tinypic, 3, 5);
 		System.out.println();
 		print(image4);
-
+		Color c1 = new Color(100, 40, 100);
+		Color c2 = new Color(200, 20, 40);
+		System.out.println(blend(c1, c2, 0.25));
 		
+		Color[][] image5;
+
+		// Tests the vertical flipping of an image:
+		image5 = flippedVertically(tinypic);
+		System.out.println();
+		print(image5);
+
+		Color[][] image6;
+
+		// Tests the vertical flipping of an image:
+		image6 = flippedVertically(eyes);
+		System.out.println();
+		print(image6);
+		print(blend(image5, image6, 0.25));
+
+*/
+
 		
 		//// Write here whatever code you need in order to test your work.
 		//// You can continue using the image array.
@@ -205,7 +226,19 @@ public class Runigram {
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
 		//// Replace the following statement with your code
-		return null;
+		
+		int r1 = c1.getRed();
+		int g1 = c1.getGreen();
+		int b1 = c1.getBlue();
+		int r2 = c2.getRed();
+		int g2 = c2.getGreen();
+		int b2 = c2.getBlue();
+		int newRed = (int)(alpha * r1 + (1 - alpha) * r2);
+		int newGreen = (int)(alpha * g1 + (1 - alpha) * g2);
+		int newBlue = (int)(alpha * b1 + (1 - alpha) * b2);
+		Color newColor = new Color(newRed, newGreen, newBlue);
+
+		return newColor;
 	}
 	
 	/**
@@ -216,7 +249,19 @@ public class Runigram {
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
 		//// Replace the following statement with your code
-		return null;
+		
+		int width = image1[0].length;
+		int height = image1.length;
+		Color[][] newImage = new Color[width][height];
+		for (int i = 0; i < width; i++) {
+			for(int j = 0; j < height; j++){
+				Color c1 = image1[i][j];
+				Color c2 = image2[i][j];
+				newImage[i][j] = blend(c1, c2, alpha);
+			}
+		}
+
+		return newImage;
 	}
 
 	/**
