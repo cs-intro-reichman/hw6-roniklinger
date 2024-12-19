@@ -292,10 +292,7 @@ public class Runigram {
 			newImage = blend(source, target, a);
 			Runigram.display(newImage);	
 			StdDraw.pause(500); 	
-			
 		}
-
-
 	}
 	
 	/** Creates a canvas for the given image. */
