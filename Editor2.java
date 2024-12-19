@@ -11,6 +11,22 @@ public class Editor2 {
 
 	public static void main (String[] args){
 		//// Replace this comment with your code.
-		//// This function is similar to the main function of Editor1.java			
+		//// This function is similar to the main function of Editor1.java	
+		
+		String fileName = args[0];
+		int width = Integer.parseInt(args[1]);
+		int height = Integer.parseInt(args[1]);
+		
+		Color[][] imageIn = Runigram.read(fileName);	
+		Color[][] imageOut = null;	
+		Runigram.setCanvas(imageIn);
+		imageOut = Runigram.scaled(imageIn, width, height);
+		Runigram.setCanvas(imageOut);
+		Runigram.display(imageOut);
+
+
+        // Enables drawing graphics in memory and showing it on the screen only when
+		// the StdDraw.show function is called.
+		
 	}
 }
