@@ -16,7 +16,11 @@ public class Runigram {
 		System.out.println();
 		print(image4);
 
-		//Color[][] eyes = read("eyes.ppm");
+		
+
+		Color[][] eyes = read("eyes.ppm");
+		Color[][] cake = read("cake.ppm");
+		morph(eyes, cake, 50);
 		//print(eyes);
 		
 /*
@@ -256,11 +260,11 @@ public class Runigram {
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
 		//// Replace the following statement with your code
 		
-		int width = image1[0].length;
 		int height = image1.length;
-		Color[][] newImage = new Color[width][height];
-		for (int i = 0; i < width; i++) {
-			for(int j = 0; j < height; j++){
+		int width = image1[0].length;
+		Color[][] newImage = new Color[height][width];
+		for (int i = 0; i < height; i++) {
+			for(int j = 0; j < width; j++){
 				Color c1 = image1[i][j];
 				Color c2 = image2[i][j];
 				newImage[i][j] = blend(c1, c2, alpha);
@@ -278,6 +282,20 @@ public class Runigram {
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
 		//// Replace this comment with your code
+
+		if(source.length != target.length || source[0].length != target[0].length){
+			target = scaled(target, source[0].length, source.length);
+		}
+		Color[][] newImage = new Color[source.length][source[0].length];
+		for(int i=0;i<n;i++){
+			double a = (n - i) / n;
+			newImage = blend(source, target, a);
+			Runigram.display(newImage);	
+			StdDraw.pause(500); 	
+			
+		}
+
+
 	}
 	
 	/** Creates a canvas for the given image. */
