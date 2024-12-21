@@ -119,8 +119,6 @@ public class Runigram {
 	// For example, to check that some image processing function works correctly,
 	// we can apply the function and then use this function to print the resulting image.
 	private static void print(Color[][] image) {
-		//// Replace this comment with your code
-		//// Notice that all you have to so is print every element (i,j) of the array using the print(Color) function.
 		int numCols = image[0].length;
 		int numRows = image.length;
 		for (int i = 0; i < numRows; i++) {
@@ -136,10 +134,7 @@ public class Runigram {
 	/**
 	 * Returns an image which is the horizontally flipped version of the given image. 
 	 */
-	public static Color[][] flippedHorizontally(Color[][] image) {
-		//// Replace the following statement with your code
-		
-
+	public static Color[][] flippedHorizontally(Color[][] image) {	
 		int numCols = image[0].length;
 		int numRows = image.length;
 		Color[][] flippImage = new Color[numRows][numCols];
@@ -156,9 +151,6 @@ public class Runigram {
 	 * Returns an image which is the vertically flipped version of the given image. 
 	 */
 	public static Color[][] flippedVertically(Color[][] image){
-		//// Replace the following statement with your code
-		/// 
-		
 		int numCols = image[0].length;
 		int numRows = image.length;
 		Color[][] flippImage = new Color[numRows][numCols];
@@ -174,9 +166,7 @@ public class Runigram {
 	// Computes the luminance of the RGB values of the given pixel, using the formula 
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
 	// the three values r = lum, g = lum, b = lum.
-	private static Color luminance(Color pixel) {
-		//// Replace the following statement with your code
-		
+	private static Color luminance(Color pixel) {		
 		int r = pixel.getRed();
 		int g = pixel.getGreen();
 		int b = pixel.getBlue();
@@ -188,9 +178,7 @@ public class Runigram {
 	/**
 	 * Returns an image which is the grayscaled version of the given image.
 	 */
-	public static Color[][] grayScaled(Color[][] image) {
-		//// Replace the following statement with your code
-		
+	public static Color[][] grayScaled(Color[][] image) {		
 		int numCols = image[0].length;
 		int numRows = image.length;
 		Color[][] newImage = new Color[numRows][numCols];
@@ -200,7 +188,6 @@ public class Runigram {
 				newImage[i][j] = temp;
 			}
 		}
-
 		return newImage;
 	}	
 	
@@ -209,13 +196,11 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		//// Replace the following statement with your code
 		int orgHeight = image.length;
 		int orgWidth = image[0].length;
 		Color[][] newImage = new Color[height][width];
     	double y = (double) orgHeight / height; 
 		double x = (double) orgWidth / width;  
-
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				int oldY = (int) (i * y);
@@ -235,8 +220,6 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		//// Replace the following statement with your code
-		
 		int r1 = c1.getRed();
 		int g1 = c1.getGreen();
 		int b1 = c1.getBlue();
@@ -247,7 +230,6 @@ public class Runigram {
 		int newGreen = (int)(alpha * g1 + (1 - alpha) * g2);
 		int newBlue = (int)(alpha * b1 + (1 - alpha) * b2);
 		Color newColor = new Color(newRed, newGreen, newBlue);
-
 		return newColor;
 	}
 	
@@ -257,9 +239,7 @@ public class Runigram {
 	 * and (1 - alpha) part the second image.
 	 * The two images must have the same dimensions.
 	 */
-	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
-		//// Replace the following statement with your code
-		
+	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {		
 		int height = image1.length;
 		int width = image1[0].length;
 		Color[][] newImage = new Color[height][width];
@@ -281,8 +261,6 @@ public class Runigram {
 	 * of the source image.
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
-		//// Replace this comment with your code
-
 		if(source.length != target.length || source[0].length != target[0].length){
 			target = scaled(target, source[0].length, source.length);
 		}
